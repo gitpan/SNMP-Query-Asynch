@@ -1,12 +1,19 @@
-#######################################################################
-#   $Header$
-#######################################################################
-#  $HeadURL$
-#   $Source$
-#     $Date$
-#   $Author$
-# $Revision$
-#######################################################################
+# -*- mode: perl -*-
+#
+# Copyright (c) 2008 Stephen R. Scaffidi <sscaffidi@cpan.org>
+# All rights reserved.
+#
+# This program is free software; you may redistribute it and/or modify it
+# under the same terms as Perl itself.
+#
+# Current RCS Info:
+#
+#       $Id: Asynch.pm 36 2008-03-11 16:42:51Z hercynium $
+#  $HeadURL: https://rtg-utilities.svn.sourceforge.net/svnroot/rtg-utilities/SNMP-Asynch/lib/SNMP/Query/Asynch.pm $
+#     $Date: 2008-03-11 12:42:51 -0400 (Tue, 11 Mar 2008) $
+#   $Author: hercynium $
+# $Revision: 36 $
+#
 package SNMP::Query::Asynch;
 
 # Pragmas
@@ -20,7 +27,8 @@ use Carp;
 use SNMP;
 
 # See chap 17, pg. 404, PBP (Conway 2005)
-use version; our $VERSION = qv('0.1_21');
+# use version; our $VERSION = qv('0.1_32');
+use version; our $VERSION = qv(sprintf "0.1_%d", q$Revision: 36 $ =~ /: (\d+)/);
 
 
 # This comes in handy so we don't pass bogus
@@ -382,73 +390,131 @@ module has lent itself to feature additions and enhancements very well.
 
 =head1 SUBROUTINES/METHODS
 
-=head2 new
+=head3 new
 
 Constructs a new query object with an empty queue.
 
-=head2 add_getbulk
+=head2 Query Operation Addition Methods
+
+In order to build a queue of query operations, you would repeatedly call one
+or more of these methods below to add an operation to the queue.
+
+In addition to the parameters described for each method, they all require
+parameters that are passed directly to SNMP::Session->new() at execution time.
+However, those parameters are somewhat validated when the methods are called, 
+to try to make debugging easier for code using this module.
+
+See the discussion below on "Required Parameters SNMP::Session->new()" for more 
+information.
+
+=head3 add_getbulk
 
 Adds a getbulk query operation to the queue.
 
+=head3 add_gettable - NOT YET IMPLEMENTED
+
+Adds a gettable query operation to the queue.
+
+=head3 add_get - NOT YET IMPLEMENTED
+
+Adds a get query operation to the queue.
+
+=head3 add_fget - NOT YET IMPLEMENTED
+
+Adds an fget query operation to the queue.
+
+=head3 add_bulkwalk - NOT YET IMPLEMENTED
+
+Adds a bulkwalk query operation to the queue.
+
+=head3 add_getnext - NOT YET IMPLEMENTED
+
+Adds a getnext query operation to the queue.
+
+=head3 add_fgetnext - NOT YET IMPLEMENTED
+
+Adds an fgetnext query operation to the queue.
+
+=head3 add_set - NOT YET IMPLEMENTED
+
+Adds a set query operation to the queue.
+
 =head3 Required Parameters SNMP::Session->new()
 
-=over
+Each query operation in the queue requires that a SNMP::Session object is 
+constructed, but you can't pre-construct the SNMP::Session objects and pass 
+those in because any more than 1023 of these in memory at a time will crash the 
+program.
 
-=item DestHost
+We get around this limitation by constructing only as many sessions as are 
+needed to support the in-flight operations, and no more. To do that at execution 
+time requires that the user specify the SNMP::Session->new() parameters whenever
+they add a new query operation using the methods below.
 
-=item Community
+Therefore, I have listed below the parameters for SNMP::Session->new() that will
+be accepted by each of the query operation additions methods.
 
-=item Version
+Because of these limitations, this module is tightly coupled with the L<SNMP> 
+module. There's really no other way to go about it, at least none that I can 
+think of that doesn't unacceptably degrade the execution speed.
 
-=item RemotePort
+=over 4
 
-=item Timeout
+=item * DestHost
 
-=item Retries
+=item * Community
 
-=item RetryNoSuch
+=item * Version
 
-=item SecName
+=item * RemotePort
 
-=item SecLevel
+=item * Timeout
 
-=item SecEngineId
+=item * Retries
 
-=item ContextEngineId
+=item * RetryNoSuch
 
-=item Context
+=item * SecName
 
-=item AuthProto
+=item * SecLevel
 
-=item AuthPass
+=item * SecEngineId
 
-=item PrivProto
+=item * ContextEngineId
 
-=item PrivPass
+=item * Context
 
-=item AuthMasterKey
+=item * AuthProto
 
-=item PrivMasterKey
+=item * AuthPass
 
-=item AuthLocalizedKey
+=item * PrivProto
 
-=item PrivLocalizedKey
+=item * PrivPass
 
-=item VarFormats
+=item * AuthMasterKey
 
-=item TypeFormats
+=item * PrivMasterKey
 
-=item UseLongNames
+=item * AuthLocalizedKey
 
-=item UseSprintValue
+=item * PrivLocalizedKey
 
-=item UseEnums
+=item * VarFormats
 
-=item UseNumeric
+=item * TypeFormats
 
-=item BestGuess
+=item * UseLongNames
 
-=item NonIncreasing
+=item * UseSprintValue
+
+=item * UseEnums
+
+=item * UseNumeric
+
+=item * BestGuess
+
+=item * NonIncreasing
 
 =back
 

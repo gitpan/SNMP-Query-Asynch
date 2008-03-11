@@ -17,9 +17,9 @@ my $builder = Module::Build->new(
     add_to_cleanup      => [ 'SNMP-Query-Asynch-*' ],
     
     requires => {
-        'perl' => 5.006,
-        'SNMP' => 5.03, # Figure out how to exclude 5.04
-        #'Other::Module' => '>= 1.2, != 1.5, < 2.0',
+        'perl'    => 5.006,
+        'version' => 0,
+        'SNMP'    => '>= 5.0301, != 5.0401',
     },
     
     #create_readme      => 1, # TODO Must look this up again
