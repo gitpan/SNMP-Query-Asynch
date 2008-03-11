@@ -1,0 +1,63 @@
+SNMP-Query-Asynch
+
+VERSION 
+
+  0.01
+
+DESCRIPTION
+
+This module allows for a fairly simple, streamlined means of executing large
+numbers of SNMP operations as fast as your systems can handle. It extensively
+uses net-snmp's asynchronous operation interfaces and callbacks to keep as much
+data flowing as you need. 
+
+Perl's support of closures and anonymous subroutines provide the means for 
+sophisticated, elegant control of query operations before and after execution. 
+There are also facilities to install callbacks that are run after pre-set 
+numbers (batches) of operations are completed . 
+
+These callbacks can be used to log progress, update the user, transfer results
+from memory to disk (or even another thread or process!) or anything you can
+think of! If there's some feature you desire, do not hesitate to ask me!!!
+
+Please be aware - my primary design concern is speed and flexibility. I have 
+certain non-scientific, subjective benchmarks I use to decide if some 
+modification is worth-while, but so far the design of the internals of this 
+module has lent itself to feature additions and enhancements very well. 
+
+INSTALLATION
+
+To install this module, run the following commands:
+
+    perl Build.PL
+    ./Build
+    ./Build test
+    ./Build install
+
+
+SUPPORT AND DOCUMENTATION
+
+After installing, you can find documentation for this module with the perldoc command.
+
+    perldoc SNMP::Query::Asynch
+
+You can also look for information at:
+
+    Search CPAN
+        http://search.cpan.org/dist/SNMP-Query-Asynch
+
+    CPAN Request Tracker:
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=SNMP-Query-Asynch
+
+    AnnoCPAN, annotated CPAN documentation:
+        http://annocpan.org/dist/SNMP-Query-Asynch
+
+    CPAN Ratings:
+        http://cpanratings.perl.org/d/SNMP-Query-Asynch
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2008 Steve Scaffidi
+
+This program is free software; you can redistribute it and/or modify it
+under the same terms as Perl itself.

@@ -1,0 +1,22 @@
+---
+name: SNMP-Query-Asynch
+version: v0.1_21
+author:
+  - 'Steve Scaffidi <sscaffidi@cpan.org>'
+abstract: lib/SNMP/Query/Asynch.pm
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+requires:
+  SNMP: 5.03
+  perl: 5.006
+build_requires:
+  Test::More: 0
+provides:
+  SNMP::Query::Asynch:
+    file: lib/SNMP/Query/Asynch.pm
+    version: v0.1_21
+generated_by: Module::Build version 0.2808
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
