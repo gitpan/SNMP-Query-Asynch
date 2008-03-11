@@ -8,12 +8,12 @@
 #
 # Current RCS Info:
 #
-#       $Id: Asynch.pm 36 2008-03-11 16:42:51Z hercynium $
+#       $Id: Asynch.pm 38 2008-03-11 16:48:32Z hercynium $
 #  $HeadURL: https://rtg-utilities.svn.sourceforge.net/svnroot/rtg-utilities/SNMP-Asynch/lib/SNMP/Query/Asynch.pm $
-#     $Date: 2008-03-11 12:42:51 -0400 (Tue, 11 Mar 2008) $
+#     $Date: 2008-03-11 12:48:32 -0400 (Tue, 11 Mar 2008) $
 #   $Author: hercynium $
-# $Revision: 36 $
-#
+# $Revision: 38 $
+
 package SNMP::Query::Asynch;
 
 # Pragmas
@@ -28,7 +28,7 @@ use SNMP;
 
 # See chap 17, pg. 404, PBP (Conway 2005)
 # use version; our $VERSION = qv('0.1_32');
-use version; our $VERSION = qv(sprintf "0.1_%d", q$Revision: 36 $ =~ /: (\d+)/);
+use version; our $VERSION = qv(sprintf "0.1_%d", q$Revision: 38 $ =~ /: (\d+)/);
 
 
 # This comes in handy so we don't pass bogus

@@ -2,6 +2,9 @@ use strict;
 use warnings;
 use Module::Build;
 
+# TODO need to fix Build dist on windows.
+# Luckily, this works: Build dist --tar C:\cygwin\bin\tar.exe --gzip C:\cygwin\bin\gzip.exe
+
 my $builder = Module::Build->new(
     dist_name           => 'SNMP-Query-Asynch',
     dist_author         => 'Steve Scaffidi <sscaffidi@cpan.org>',

@@ -1,6 +1,6 @@
 ---
 name: SNMP-Query-Asynch
-version: v0.1_36
+version: v0.1_38
 author:
   - 'Steve Scaffidi <sscaffidi@cpan.org>'
 abstract: lib/SNMP/Query/Asynch.pm
@@ -16,7 +16,7 @@ build_requires:
 provides:
   SNMP::Query::Asynch:
     file: lib/SNMP/Query/Asynch.pm
-    version: v0.1_36
+    version: v0.1_38
 generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
